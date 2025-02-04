@@ -4,7 +4,7 @@ import { checaCpfExistente } from "../services/customer.service.js";
 export async function listarClientes (req, res){
     try {
       const clientes = await db.query("SELECT * FROM customers;");
-      return res.send(clientes.rows);
+      return res.status(200).send(clientes.rows);
     } catch (error) {
         return res.status(500).send("erro no servidor");
     }
@@ -27,8 +27,6 @@ export async function listarClientes (req, res){
           return res.status(500).send("erro no servidor");
         }
   }
-
-
   export async function  listarClientePorId (req, res){
        const id = req.params.id;
        try {
